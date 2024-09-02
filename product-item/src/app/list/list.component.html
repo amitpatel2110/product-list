@@ -1,0 +1,30 @@
+<div class="product-container">
+    <h1>Products</h1>
+    <input type="text" placeholder="Filter by Title or Category..." (input)="filterProducts($event)">
+    <select (change)="sortProducts($event)">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td><img [src]="product.image" alt="{{ product.title }}" class="product-image"></td>
+          <td>{{ product.title }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.price | currency: 'INR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
